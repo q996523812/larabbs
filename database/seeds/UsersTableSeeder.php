@@ -47,11 +47,15 @@ class UsersTableSeeder extends Seeder
         $user->name = 'Summer';
         $user->email = 'summer@example.com';
         $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        // 初始化用户角色，将 1 号用户指派为『站长』
+        $user->assignRole('Founder');
         $user->save();
+
         $user = User::find(2);
         $user->name = 'qss2';
         $user->email = 'qss2@zhfi.cn';
         $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        $user->assignRole('Maintainer');
         $user->save();
     }
 }
