@@ -13,6 +13,7 @@
   <meta name="description" content="@yield('description', 'LaraBBS 爱好者社区')" />
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
   @yield('styles')
 </head>
 
@@ -36,8 +37,8 @@
     @include('sudosu::user-selector')
   @endif
   <!-- Scripts -->
-  <script src="{{ mix('js/app.js') }}"></script>
-
+  
+  
   @yield('scripts')
 
 </body>

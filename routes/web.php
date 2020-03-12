@@ -48,3 +48,7 @@ Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
+Route::resource('projects', 'ProjectsController', ['only' => ['index']]);
+Route::get('projects/list/{type}', 'ProjectsController@list')->name('projects.list');
+Route::get('projects/show/{id}', 'ProjectsController@show')->name('projects.show');
