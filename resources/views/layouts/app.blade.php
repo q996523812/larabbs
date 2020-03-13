@@ -35,7 +35,7 @@
   </div>
 
   @if (app()->isLocal())
-    @include('sudosu::user-selector')
+    <!-- @include('sudosu::user-selector') -->
   @endif
   <!-- Scripts -->
   
