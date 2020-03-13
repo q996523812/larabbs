@@ -49,6 +49,7 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
 Route::resource('projects', 'ProjectsController', ['only' => ['index']]);
-Route::get('projects/list/{type}', 'ProjectsController@list')->name('projects.list');
 Route::get('projects/show/{id}', 'ProjectsController@show')->name('projects.show');
