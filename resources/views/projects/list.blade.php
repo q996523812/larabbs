@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', isset($category) ? $category->name : '话题列表')
+@section('title', isset($category) ? $category->name : '项目列表')
 @section('content')
 
 <div class="row mb-5">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-
+	public $incrementing = false;
 	public function scopeWithOrder($query, $order)
     {
         // 不同的排序，使用不同的数据读取逻辑
@@ -38,7 +38,7 @@ class Project extends Model
     }
     public function link($params = [])
     {
-        return route('projects.show', array_merge([$this->type], $params));
+        return route('projects.show', array_merge([$this->id], $params));
     }
 
     public function getGpDateStartAttribute()
@@ -48,5 +48,79 @@ class Project extends Model
     public function getGpDateEndAttribute()
     {
         return date('Y-m-d', strtotime($this->attributes['gp_date_end']));
+    }
+
+    public function files()
+    {
+        // return $this->hasMany(File::class,'filetable_id','id');
+        return $this->morphMany(File::class, 'filetable');
+    }
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function projectLease()
+    {
+        return $this->hasOne(ProjectLease::class,'id','detail_id');
+    }
+    public function projectPurchase()
+    {
+        return $this->hasOne(ProjectPurchase::class,'id','detail_id');
+    }
+    public function projectConveyancing()
+    {
+        return $this->hasOne(ProjectConveyancing::class,'id','detail_id');
+    }
+    public function projectCapitalIncrease()
+    {
+        return $this->hasOne(ProjectCapitalIncrease::class,'id','detail_id');
+    }
+    public function projectTransferAsset()
+    {
+        return $this->hasOne(ProjectTransferAsset::class,'id','detail_id');
+    }
+
+    public function detail(){
+        switch($this->type){
+            case 'zczl':
+                return $this->projectLease();
+                break;
+            case 'qycg':
+                return $this->projectPurchase();
+                break;
+            case 'cqzr':
+                return $this->ProjectConveyancing();
+                break;
+            case 'zzkg':
+                return $this->ProjectCapitalIncrease();
+                break;
+            case 'zczr':
+                return $this->projectTransferAsset();
+                break;
+            
+        }
+    }
+    public function wtf(){
+        $model = null;
+        switch($this->type){
+            case 'qycg':
+                $model = $this->targetCompanyBaseInfo();
+                break;
+            case 'zczl':
+                $model = $this->sellerInfo();
+                break;
+            case 'cqzr':
+                $model = $this->sellerInfo();
+                break;
+            case 'zzkg':
+                $model = $this->targetCompanyBaseInfo();
+                break;
+            case 'zczr':
+                $model = $this->sellerInfo();
+                break;
+            
+        }
+        return $model;
     }
 }

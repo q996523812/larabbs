@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectCapitalIncrease extends Model
 {
-    //
+    public $incrementing = false;
 }

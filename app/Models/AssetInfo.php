@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssetInfo extends Model
 {
-    //
+    public $incrementing = false;
 }

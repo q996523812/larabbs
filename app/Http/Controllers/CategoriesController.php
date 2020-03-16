@@ -22,22 +22,28 @@ class CategoriesController extends Controller
     //     return view('topics.index', compact('topics', 'category'));
     // }
 
-    public function show(Category $category, Request $request, Topic $topic, User $user)
+    // public function show(Category $category, Request $request, Topic $topic, User $user)
+    // {
+    //     // 读取分类 ID 关联的话题，并按每 20 条分页
+    //     $projects = $project->withOrder($request->order)
+    //                     ->where('type', $category->description)
+    //                     ->paginate(20);
+
+    //     // 活跃用户列表
+    //     $active_users = $user->getActiveUsers();   
+                 
+    //     // 传参变量话题和分类到模板中
+    //     return view('topics.index', compact('topics', 'category', 'active_users'));
+    // }
+
+    public function show(Category $category, Request $request, Project $project)
     {
         // 读取分类 ID 关联的话题，并按每 20 条分页
         $projects = $project->withOrder($request->order)
                         ->where('type', $category->description)
+                        ->where('status','>=',11)
                         ->paginate(20);
-
-        // 活跃用户列表
-        $active_users = $user->getActiveUsers();   
-                 
-        // 传参变量话题和分类到模板中
-        return view('topics.index', compact('topics', 'category', 'active_users'));
-    }
-
-    public function show(Category $category, Request $request, Project $project)
-    {
+        // dd($projects);
     	return view('projects.list', compact('projects', 'category'));
     }
 }

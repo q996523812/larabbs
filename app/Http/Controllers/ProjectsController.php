@@ -19,30 +19,19 @@ class ProjectsController extends Controller
     {
         // 读取分类 ID 关联的话题，并按每 20 条分页
         $projects = $project->withOrder($request->order)
+                        ->where('status','>=',11)
                         ->paginate(5);
         // 传参变量话题和分类到模板中
         return view('projects.list', compact('projects'));
     }
-    public function list($type,Request $request, Project $project)
+
+    public function show($id,Request $request)
     {
-        // 读取分类 ID 关联的话题，并按每 20 条分页
-        $projects = $project->withOrder($request->order)
-                        ->where('type', $type)
-                        ->paginate(20);
-
+        $project = Project::find($id);
+        // $url = 'projects.'.$project->type.'.show';
+        $url = 'projects.show';
         // 传参变量话题和分类到模板中
-        return view('projects.list', compact('projects'));
-    }
-
-    public function show(Project $project,Request $request)
-    {dd($type);
-        // 读取分类 ID 关联的话题，并按每 20 条分页
-        $projects = $project->withOrder($request->order)
-                        ->where('type', $type)
-                        ->paginate(20);
-
-        // 传参变量话题和分类到模板中
-        return view('projects.list', compact('projects'));
+        return view($url, compact('project'));
     }
 
 

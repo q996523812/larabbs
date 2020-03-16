@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectTransferAsset extends Model
 {
-    //
+    public $incrementing = false;
 }
