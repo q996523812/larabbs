@@ -4,5 +4,6 @@
 @section('content')
 
 @include('projects._head', ['project' => $project])
+@include('projects.qycg._jcxx', ['detail' => $detail])
 
 @endsection

@@ -92,3 +92,21 @@ function model_plural_name($model)
     // 获取子串的复数形式，例如：传参 `user` 会得到 `users`
     return str_plural($snake_case_name);
 }
+
+function format_date($date){
+	if(is_null($date)){
+	    return '';
+	}
+	else{
+	    return date('Y-m-d',strtotime($date));
+	}
+}
+
+function format_time($date){
+	if(is_null($date)){
+	    return '';
+	}
+	else{
+	    return date('Y-m-d H:i:s',strtotime($date));
+	}
+}

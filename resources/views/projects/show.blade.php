@@ -3,13 +3,12 @@
 
 @section('content')
 
-<div class="container">
 	<div class="row clearfix">
-		<div class="col-md-12 column">
+		<div class="col-md-9 column">
 			<div class="page-header">
-				<h1>
-					{{ $project->title }} <small>Subtext for header</small>
-				</h1>
+				<span style="font-size:40px;">
+					{{ $project->title }} <small></small>
+				</span>
 				<span class="badge badge-secondary badge-pill">围观数 {{ $project->djl }} </span>
 			</div>
 			<div class="panel panel-default">
@@ -22,8 +21,8 @@
 					<div>转让方：{{ $project->price }}</div>
 					<div>挂牌起止日期：{{ $project->gp_date_start }} 至 {{ $project->gp_date_end }}</div>
 				</div>
-				<div class="panel-body">
-					@include('projects.'.$project->type.'._jcxx')
+				<div class="panel-body table-responsive">
+					
 				</div>
 				<div class="panel-footer">
 					
@@ -32,5 +31,38 @@
 			
 		</div>
 	</div>
-</div>
+
+	<div class="row clearfix">
+		<div class="col-md-9">
+			<table class="project-table table table-bordered">
+				<thead>
+			        <tr>
+			        	<th style="width:25%;"></th>
+			        	<th style="width:25%;"></th>
+			        	<th style="width:25%;"></th>
+			        	<th style="width:25%;"></th>
+			        </tr>
+			    </thead> 
+				<tbody>
+					@include('projects.'.$project->type.'._jcxx')
+					@include('projects.fsxx._wtf')
+
+					@if($project->type == 'qycg')
+
+					@elseif($project->type == 'zczl')
+
+					@elseif($project->type == 'cqzr')
+						@include('projects.fsxx._bdqy')
+					@elseif($project->type == 'zczr')
+
+					@elseif($project->type == 'zzkg')
+						@include('projects.fsxx._sjbg')
+						@include('projects.fsxx._cwbb')
+					@endif
+
+					@include('projects.fsxx._lxfs')
+				</tbody>
+			</table>
+		</div>
+	</div>
 @endsection

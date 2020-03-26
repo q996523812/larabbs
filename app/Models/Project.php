@@ -102,25 +102,88 @@ class Project extends Model
         }
     }
     public function wtf(){
-        $model = null;
-        switch($this->type){
-            case 'qycg':
-                $model = $this->targetCompanyBaseInfo();
-                break;
-            case 'zczl':
-                $model = $this->sellerInfo();
-                break;
-            case 'cqzr':
-                $model = $this->sellerInfo();
-                break;
-            case 'zzkg':
-                $model = $this->targetCompanyBaseInfo();
-                break;
-            case 'zczr':
-                $model = $this->sellerInfo();
-                break;
-            
-        }
+        $model = $this->sellerInfo();
         return $model;
+    }
+
+    public function pbResults()
+    {
+        return $this->hasMany(PbResult::class);
+    }
+    public function intentionalParties()
+    {
+        return $this->hasMany(IntentionalParty::class);
+    }
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
+    }
+
+    public function transactionAnnouncement()
+    {
+        return $this->hasOne(TransactionAnnouncement::class);
+    }
+
+    public function winNotice()
+    {
+        return $this->hasOne(WinNotice::class);
+    }
+
+    public function paymentNotice()
+    {
+        return $this->hasOne(PaymentNotice::class);
+    }
+
+    public function transactionConfirmation()
+    {
+        return $this->hasOne(TransactionConfirmation::class);
+    }
+    public function contract()
+    {
+        return $this->hasOne(Contract::class);
+    }
+
+    public function bidResult()
+    {
+        return $this->hasOne(BidResult::class);
+    }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class);
+    }
+
+    public function targetCompanyBaseInfo()
+    {
+        return $this->hasOne(TargetCompanyBaseInfo::class);
+    }
+
+    public function auditReports()
+    {
+        return $this->hasMany(AuditReport::class);
+    }
+    public function transactionMode()
+    {
+        return $this->hasOne(TransactionMode::class);
+    }
+    public function assetInfo()
+    {
+        return $this->hasOne(AssetInfo::class);
+    }
+    public function financialStatement()
+    {
+        return $this->hasOne(FinancialStatement::class);
+    }
+    public function assessment()
+    {
+        return $this->hasOne(Assessment::class);
+    }
+    public function sellerInfo()
+    {
+        return $this->hasOne(SellerInfo::class);
+    }
+    public function contact()
+    {
+        return $this->hasOne(Contact::class);
     }
 }
