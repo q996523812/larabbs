@@ -71,7 +71,7 @@
 		</tr>
 		<tr>
 			<th>披露方式</th>
-			<td>{{getDicNames('announceWay',$detail->announceWay)}}</td>
+			<td>{{getDicNames('announceWay',$detail->announceWay,2)}}</td>
 			<th>标的企业原股东是否放弃优先受让权</th>
 			<td>{{$detail->announceMedia}}</td>
 		</tr>
@@ -80,4 +80,70 @@
 			<td>{{getDicName('sf',$detail->unitTransferee)}}</td>
 			<th>是否允许网上报名</th>
 			<td>{{getDicName('sf',$detail->pub0)}}</td>
+		</tr>
+		<tr>
+			<th>保证金金额（万元）</th>
+			<td colspan="3">{{$detail->pubBail}}</td>
+		</tr>
+		<tr>
+			<th>保证金交纳时间</th>
+			<td colspan="3">
+				@if($detail->bailStartFlag ==1) 
+					交易机构受让登记后交纳保证金
+				@elseif($detail->bailStartFlag ==2) 
+					经资格确认后交纳保证金
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<th>保证金交纳截止时间要求</th>
+			<td colspan="3">
+				@if($detail->pubBailType ==1) 
+					挂牌截止日17:00前(以银行到账时间为准)
+				@elseif($detail->pubBailType ==2) 
+					交纳开始后，{{$detail->pubBailDays}}个工作日17:00前有效(以银行到账时间为准)
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<th rowspan="3">保证金交纳账号</th>
+			<th>账户名称</th>
+			<td colspan="2">{{$detail->bail_account_name}}</td>
+		</tr>
+			<th>开户行</th>
+			<td colspan="2">{{$detail->bail_account_bank}}</td>
+		</tr>
+		</tr>
+			<th>银行账号</th>
+			<td colspan="2">{{$detail->bail_account_code}}</td>
+		</tr>
+		<tr>
+			<th>受让方资格条件</th>
+			<td colspan="3">{{$detail->buyConditions}}</td>
+		</tr>
+		<tr>
+			<th>价款支付方式</th>
+			<td>{{getDicName('pubPayMode',$detail->pubPayMode)}}</td>
+			<th>价款支付要求</th>
+			<td>{{$detail->payPeriodInfo}}</td>
+		</tr>
+		<tr>
+			<th>是否披露意向方应提交的附件材料</th>
+			<td colspan="3">{{getDicName('sf',$detail->pub16)}}</td>
+		</tr>
+		<tr>
+			<th>重大事项及其他披露内容</th>
+			<td colspan="3">{{$detail->important}}</td>
+		</tr>
+		<tr>
+			<th>与转让相关的其他条件</th>
+			<td colspan="3">{{$detail->sellConditions}}</td>
+		</tr>
+		<tr>
+			<th>保证内容</th>
+			<td colspan="3">{{$detail->valueDesc}}</td>
+		</tr>
+		<tr>
+			<th>处置方法</th>
+			<td colspan="3">{{$detail->pubBailMemo}}</td>
 		</tr>

@@ -34,8 +34,8 @@
 
 	<div class="row clearfix">
 		<div class="col-md-9">
-			<table class="project-table table table-bordered">
-				<thead>
+			<table class="project-table table">
+				<thead class="thead">
 			        <tr>
 			        	<th style="width:25%;"></th>
 			        	<th style="width:25%;"></th>

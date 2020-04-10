@@ -1,4 +1,11 @@
 .project-table {
+	thead{
+		tr{
+			th{
+				border: 0px;
+			}
+		}
+	}
 	tbody{
 		tr {
 			td,th{

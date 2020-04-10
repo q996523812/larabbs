@@ -17033,6 +17033,10 @@ body {
   background-color: #d15b47 !important;
 }
 
+.project-table thead tr th {
+  border: 0px;
+}
+
 .project-table tbody tr td,
 .project-table tbody tr th {
   padding-left: 20px;
@@ -17043,6 +17047,10 @@ body {
   border-right: 1px solid #333332;
   border-top: 1px solid #333332;
   border-collapse: collapse;
+}
+
+.project-table tbody tr th {
+  background: #f5f5f5;
 }
 
 .project-table tbody .title {

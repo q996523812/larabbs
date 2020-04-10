@@ -8,35 +8,30 @@
 
           <div class="media-heading mt-0 mb-1">
             <!--<a href="{{ route('projects.show', [$project->id]) }}" title="{{ $project->title }}">-->
-            <a href="{{ $project->link() }}" title="{{ $project->title }}">
+            <a href="{{ $project->link() }}" title="{{ $project->title }}" style="font-size:22px;">
               {{ $project->title }}
             </a>
-            <!--<a class="float-right" href="{{ route('projects.show', [$project->id]) }}">-->
-            <a href="{{ $project->link() }}" title="点击量：{{ $project->djl }}">
-              <span class="badge badge-secondary badge-pill"> {{ $project->djl }} </span>
-            </a>
+            <span class="badge badge-secondary badge-pill float-right" title="点击量：{{ $project->djl }}"> {{ $project->djl }} </span>
           </div>
 
-          <small class="media-body meta text-secondary">
-
-            <i class="far fa-clock"></i>
-            <span class="text-secondary">
-            	挂牌日期：从 {{ $project->gp_date_start}} 到 {{ $project->gp_date_end }}
+          <div class="media-body meta text-secondary" style="font-size:16px;margin-top:15px;">
+            <span>
+              <i class="far fa-money"></i>
+              <span class="text-secondary">
+                挂牌底价：<font style="color: red; font-size:20px;">{{ $project->price}}</font>  万元
+              </span>
             </span>
-
-            <span>  •  </span>
-
-            <i class="far fa-money"></i>
-            <span class="text-secondary">
-            	挂牌底价：{{ $project->price}}
+            <span class="float-right">
+              <i class="far fa-clock"></i>
+              <span class="text-secondary">
+              	挂牌日期：从  {{ $project->gp_date_start}}  到  {{ $project->gp_date_end }}
+              </span>
             </span>
-
-            <span>  •  </span>
-
-            <i class="far fa-folder"></i>
-            <span class="timeago">{{ get_project_type_name($project->type) }}</span>
-          </small>
-
+            
+          </div>
+          <div style="font-size:13px;margin-top:15px;">
+            <span class="float-right">{{ get_project_type_name($project->type) }}</span>
+          </div>
         </div>
       </li>
 

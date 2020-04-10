@@ -29,6 +29,9 @@
         <li class="nav-item {{ category_nav_active('5') }}">
           <a class="nav-link" href="{{ route('categories.show', '5') }}">产权转让</a>
         </li>
+        <li class="nav-item {{ category_nav_active('6') }}">
+          <a class="nav-link" href="{{ route('categories.show', '6') }}">预披露</a>
+        </li>
         
       </ul>
 
