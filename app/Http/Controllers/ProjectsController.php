@@ -42,7 +42,7 @@ class ProjectsController extends Controller
         $detail = $project->detail;
         $wtf = $project->sellerInfo;
 
-        $bdqy = $detail->targetCompanyBaseInfo;
+        $bdqy = $project->targetCompanyBaseInfo;
         if(empty($bdqy)){
             $bdqy = new TargetCompanyBaseInfo;
         }
